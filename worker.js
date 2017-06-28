@@ -1,12 +1,20 @@
+var tracker = new Array(24).fill(0); //will track number of tweets posted during each hour in day
+
 var error = function (err, response, body) {
-    	console.log('ERROR [%s]', err);
+    	console.log('ERROR:', err);
 	};
 var success = function (data) {
-    addTimes( JSON.parse(data) );
+    addTimes( JSON.parse(data), tracker);
+	console.log(tracker);
 };
 
-var addTimes = function (tweets) {
-	tweets.forEach( (tweet) => console.log(tweet.created_at) );
+var addTimes = function (tweets, tracker) {
+	tweets.forEach( (tweet) => tracker[timeFromTweet(tweet)]++);
+}
+
+var timeFromTweet = function (tweet) {
+	let date = new Date(tweet.created_at);
+	return date.getHours();
 }
 
 var Twitter = require('twitter-node-client').Twitter;
@@ -20,4 +28,4 @@ var config = {
 
 var twitter = new Twitter(config);
 
-twitter.getUserTimeline({ screen_name: 'realDonaldTrump', count: '10'}, error, success);
+twitter.getUserTimeline({ screen_name: 'realDonaldTrump', count: '1000'}, error, success);
