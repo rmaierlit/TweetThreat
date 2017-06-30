@@ -91,5 +91,3 @@ TweetGetter.prototype.start = function () {
 
 var tweetGetter = new TweetGetter(twitter, maria);
 tweetGetter.start();
-
-
