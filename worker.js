@@ -1,28 +1,45 @@
-var tracker = new Array(24).fill(0); //will track number of tweets posted during each hour in day
+var Maria = require ('mariasql');
+var m = Maria({
+        host: 'localHost',
+        user: 'root',
+        db: 'tweetThreat'
+});
+
+//var tracker = new Array(24).fill(0); //will track number of tweets posted during each hour in day
 
 var error = function (err, response, body) {
     	console.log('ERROR:', err);
 	};
 var success = function (data) {
-    addTimes( JSON.parse(data), tracker);
-	console.log(tracker);
+    addTimes( JSON.parse(data) );
 };
 
-var addTimes = function (tweets, tracker) {
+var addTimes = function (tweets) {
 	if (tweets.length === 0 ){
 		return;
 	}
-	let lastId = tweets[tweets.length - 1].id;
-	console.log(tweets[tweets.length - 1]);
-	tweets.forEach( (tweet) => tracker[timeFromTweet(tweet)]++);
 
+	//for each tweet in the array, insert tweet.id and tweet.created_at into the tweets table
+	tweets.forEach( (tweet) => {
+		let id = tweet.id;
+		let date = new Date(tweet.created_at);
+		date = date.toISOString();
+		m.query('INSERT INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, function (error, sucess){
+			if (error){
+				console.log(error, date)
+			}
+		});
+	});
+
+	//get the next page of tweets after this one
+	let lastId = tweets[tweets.length - 1].id;
 	getTimes(lastId);
 }
 
-var timeFromTweet = function (tweet) {
-	let date = new Date(tweet.created_at);
-	return date.getHours();
-}
+// var dateFromTweet = function (tweet) {
+// 	let date = new Date(tweet.created_at);
+// 	return date;
+// }
 
 var Twitter = require('twitter-node-client').Twitter;
 
@@ -37,7 +54,7 @@ var twitter = new Twitter(config);
 
 var getTimes = function (maxId) {
 	let options = { screen_name: 'realDonaldTrump',
-					count: '100',
+					count: '200',
 					trim_user: true,
 					since_id: 822421390125043713}
 	
