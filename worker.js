@@ -28,6 +28,10 @@ var TweetGetter = function(twitter, maria) {
 	this.sinceId = null;
 	this.maxId = null;
 	this.latest = null;
+
+	//bind any functions that will be passed as callbacks so that reference to the value 'this' is not lost
+	this.addTimes = this.addTimes.bind(this); 
+	this.addSingleTime = this.addSingleTime.bind(this);
 }
 
 TweetGetter.prototype.addTimes = function (data) {
@@ -44,17 +48,19 @@ TweetGetter.prototype.addTimes = function (data) {
 	}
 
 	//for each tweet in the array, insert tweet.id and tweet.created_at into the tweets table
-	tweets.forEach( (tweet) => {
-		let id = tweet.id;
-		let date = new Date(tweet.created_at);
-		date = date.toISOString();
-		this.m.query('INSERT IGNORE INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, error);
-	});
+	tweets.forEach(this.addSingleTime);
 
 	//get the next page of tweets after this one
 	this.maxId = tweets[tweets.length - 1].id;
 	this.getTimes();
 };
+
+TweetGetter.prototype.addSingleTime = function (tweet) {
+	let id = tweet.id;
+	let date = new Date(tweet.created_at);
+	date = date.toISOString();
+	this.m.query('INSERT IGNORE INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, error);
+}
 
 TweetGetter.prototype.getTimes = function () {
 	let options = { 
@@ -69,7 +75,7 @@ TweetGetter.prototype.getTimes = function () {
 
 	options.since_id = this.sinceId;
 	
-	this.twitter.getUserTimeline(options, error, this.addTimes.bind(this));
+	this.twitter.getUserTimeline(options, error, this.addTimes);
 };
 
 TweetGetter.prototype.start = function () {
