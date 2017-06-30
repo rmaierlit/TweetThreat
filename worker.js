@@ -16,6 +16,7 @@ var success = function (data) {
 
 var addTimes = function (tweets) {
 	if (tweets.length === 0 ){
+		m.end();
 		return;
 	}
 
