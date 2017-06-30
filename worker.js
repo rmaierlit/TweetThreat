@@ -25,9 +25,9 @@ var addTimes = function (tweets) {
 		let id = tweet.id;
 		let date = new Date(tweet.created_at);
 		date = date.toISOString();
-		m.query('INSERT INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, function (error, sucess){
+		m.query('INSERT IGNORE INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, function (error, sucess){
 			if (error){
-				console.log(error, date)
+				console.log(error, date);
 			}
 		});
 	});
@@ -36,11 +36,6 @@ var addTimes = function (tweets) {
 	let lastId = tweets[tweets.length - 1].id;
 	getTimes(lastId);
 }
-
-// var dateFromTweet = function (tweet) {
-// 	let date = new Date(tweet.created_at);
-// 	return date;
-// }
 
 var Twitter = require('twitter-node-client').Twitter;
 
@@ -59,7 +54,7 @@ var getTimes = function (maxId) {
 					trim_user: true,
 					since_id: 822421390125043713}
 	
-	if (maxId !== undefined){
+	if (maxId !== undefined) {
 		options.max_id = maxId;
 	}
 	
