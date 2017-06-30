@@ -1,10 +1,9 @@
 var Maria = require ('mariasql');
-var m = Maria({
+var maria = Maria({
         host: 'localHost',
         user: 'root',
         db: 'tweetThreat'
 });
-
 
 var Twitter = require('twitter-node-client').Twitter;
 
@@ -23,8 +22,10 @@ var error = function (err) {
 	}
 };
 
-var TweetGetter = function(sinceId) {
-	this.sinceId = sinceId;
+var TweetGetter = function(twitter, maria) {
+	this.twitter = twitter;
+	this.m = maria;
+	this.sinceId = null;
 	this.maxId = null;
 	this.latest = null;
 }
@@ -33,13 +34,13 @@ TweetGetter.prototype.addTimes = function (data) {
 	var tweets = JSON.parse(data);
 
 	if (tweets.length === 0 ){
-		m.end();
+		this.m.end();
 		return;
 	}
 
 	if (this.latest === null){
 		this.latest = tweets[0].id;
-		m.query('UPDATE users SET most_recent_tracked_tweet = :latest where screen_name = "realDonaldTrump"', {latest: this.latest}, error);
+		this.m.query('UPDATE users SET most_recent_tracked_tweet = :latest where screen_name = "realDonaldTrump"', {latest: this.latest}, error);
 	}
 
 	//for each tweet in the array, insert tweet.id and tweet.created_at into the tweets table
@@ -47,7 +48,7 @@ TweetGetter.prototype.addTimes = function (data) {
 		let id = tweet.id;
 		let date = new Date(tweet.created_at);
 		date = date.toISOString();
-		m.query('INSERT IGNORE INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, error);
+		this.m.query('INSERT IGNORE INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, error);
 	});
 
 	//get the next page of tweets after this one
@@ -68,15 +69,21 @@ TweetGetter.prototype.getTimes = function () {
 
 	options.since_id = this.sinceId;
 	
-	twitter.getUserTimeline(options, error, this.addTimes.bind(this));
+	this.twitter.getUserTimeline(options, error, this.addTimes.bind(this));
 };
 
-m.query('SELECT most_recent_tracked_tweet from users where screen_name = "realDonaldTrump"', null, function(error, success){
-	if (error){
-		console.log(error);
-	} else {
-		let sinceId = success[0].most_recent_tracked_tweet;
-		let worker = new TweetGetter(sinceId);
-		worker.getTimes();
-	}
-});
+TweetGetter.prototype.start = function () {
+	this.m.query('SELECT most_recent_tracked_tweet from users where screen_name = "realDonaldTrump"', null, (error, success) => {
+		if (error){
+			console.log(error);
+		} else {
+			this.sinceId = success[0].most_recent_tracked_tweet;
+			this.getTimes();
+		}
+	});
+}
+
+var tweetGetter = new TweetGetter(twitter, maria);
+tweetGetter.start();
+
+
