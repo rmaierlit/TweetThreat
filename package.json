@@ -1,0 +1,25 @@
+{
+  "name": "tweetthreat",
+  "version": "1.0.0",
+  "description": "evaluteds risks that specific twitter users will post new tweets in the near future",
+  "main": "server/server.js",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mariasql": "^0.2.6",
+    "twitter-node-client": "0.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmaierlit/TweetThreat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmaierlit/TweetThreat/issues"
+  },
+  "homepage": "https://github.com/rmaierlit/TweetThreat#readme"
+}
