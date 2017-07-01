@@ -37,13 +37,21 @@ var TweetGetter = function(twitter, maria) {
 TweetGetter.prototype.addTimes = function (data) {
 	var tweets = JSON.parse(data);
 
-	//abort if api call repsonds with either no tweets, 
-	//or a single tweet which was already processed (because it was at the end of last batch of tweets)
-	if (tweets.length <= 1 && (tweets.length === 0 || tweets[0].id === this.maxId) ){
+	//abort if api call repsonds with no tweets
+	if (tweets.length === 0){
 		this.m.end();
 		return;
 	}
 
+	let lastTweetId = tweets[tweets.length - 1].id.toString();
+
+	//abort if api call responds a single tweet which was already processed
+	if (tweets.length === 1 && lastTweetId === this.maxId){
+		this.m.end();
+		return;
+	}
+
+	//if this is the first batch, update the most recent tracked tweet id for this user
 	if (this.latest === null){
 		this.latest = tweets[0].id;
 		this.m.query('UPDATE users SET most_recent_tracked_tweet = :latest where screen_name = "realDonaldTrump"', {latest: this.latest}, error);
@@ -53,7 +61,7 @@ TweetGetter.prototype.addTimes = function (data) {
 	tweets.forEach(this.addSingleTime);
 
 	//get the next page of tweets after this one
-	this.maxId = tweets[tweets.length - 1].id;
+	this.maxId = lastTweetId;
 	this.getTimes();
 };
 
@@ -62,6 +70,13 @@ TweetGetter.prototype.addSingleTime = function (tweet) {
 	let date = new Date(tweet.created_at);
 	date = date.toISOString();
 	this.m.query('INSERT IGNORE INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, error);
+}
+
+TweetGetter.prototype.alreadyProcessed = function (id) {
+	if (typeof id !== 'string'){
+		id = id.toString();
+	}
+	return this.sinceId === id || this.maxId === id;
 }
 
 //since maxId is inclusive, subsequent batches will return one already processed tweet (the last tweet from previous batch)
