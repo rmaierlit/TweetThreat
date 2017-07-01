@@ -16,38 +16,22 @@ routes.get('/realDonaldTrump', function(req, res) {
     (SELECT DISTINCT HOUR(date_time) AS hour, DATE(date_time) AS date FROM tweets) AS distinct_hour_and_day
     GROUP BY hour`;
 
+    const nearNowQuery = 
+    `SELECT count(distinct DATE(date_time)) as quantity FROM tweets 
+    where ABS(TIME_TO_SEC(TIMEDIFF(TIME(:now), TIME(date_time)))) < 30 * 60`
+
     m.query(daysFromFirstTweetQuery, null, (error, rows) => {
-        var days = parseInt(rows[0].total_days);
-        console.log(days);
-        m.query(atLeastOneTweetByHourQuery, null, (error, rows) => {  
-            let threatByHour = Array(24).fill(0);
-            rows.forEach( (row) => threatByHour[row.hour] = parseInt(row.quantity) / days);
-
-            console.log(rows);
-            console.log(threatByHour);
-
-            let now = new Date();
-
-            // use ?hour=23 (or any other hour) to test for different times of day
-            var hour = parseInt(now.getUTCHours());
-            if (req.query.hour){
-                hour=parseInt(req.query.hour);
-            }
-            console.log('hour: ', hour);
-
-            let minutes = parseInt(now.getUTCMinutes());
-
-
-            //derive the approximate threat of a new tweet in the next 60 minutes
-            let currentHourThreat = threatByHour[hour];
-            let nextHourThreat = threatByHour[(hour + 1) % 24];
-            console.log(currentHourThreat, nextHourThreat);
-            let currentHourIncluded = (60 - minutes) / 60;
-            let nextHourIncluded = minutes / 60;
-            let rightNowThreat = ( currentHourThreat * currentHourIncluded ) + (nextHourThreat * nextHourIncluded);
-            
-            let percentRisk = Math.round(rightNowThreat * 10000) /100;
-            res.send(`${percentRisk}% risk of this user tweeting in the next hour`);
+        let totalDays = parseInt(rows[0].total_days);
+        let now = new Date();
+        if (req.query.hour){
+            now.setUTCHours(req.query.hour);
+        }
+        now = now.toISOString();
+        m.query(nearNowQuery, {now}, (error, rows) => {  
+            let daysWhenTweetedNearNow = rows[0].quantity
+            let risk = daysWhenTweetedNearNow / totalDays;          
+            let percentRisk = Math.round(risk * 10000) /100;
+            res.send(`${percentRisk}% risk of user @realDonaldTrump tweeting in the next hour`);
         });
     });
 })
