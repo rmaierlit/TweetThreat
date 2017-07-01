@@ -37,7 +37,9 @@ var TweetGetter = function(twitter, maria) {
 TweetGetter.prototype.addTimes = function (data) {
 	var tweets = JSON.parse(data);
 
-	if (tweets.length === 0 ){
+	//abort if api call repsonds with either no tweets, 
+	//or a single tweet which was already processed (because it was at the end of last batch of tweets)
+	if (tweets.length <= 1 && (tweets.length === 0 || tweets[0].id === this.maxId) ){
 		this.m.end();
 		return;
 	}
@@ -62,6 +64,7 @@ TweetGetter.prototype.addSingleTime = function (tweet) {
 	this.m.query('INSERT IGNORE INTO tweets (tweet_id, date_time) VALUES (:id, :date)', {id, date}, error);
 }
 
+//since maxId is inclusive, subsequent batches will return one already processed tweet (the last tweet from previous batch)
 TweetGetter.prototype.getTimes = function () {
 	let options = { 
 		screen_name: 'realDonaldTrump',
@@ -73,7 +76,9 @@ TweetGetter.prototype.getTimes = function () {
 		options.max_id = this.maxId;
 	}
 
-	options.since_id = this.sinceId;
+	if (this.sinceId){
+		options.since_id = this.sinceId;
+	}
 	
 	this.twitter.getUserTimeline(options, error, this.addTimes);
 };
@@ -83,7 +88,9 @@ TweetGetter.prototype.start = function () {
 		if (error){
 			console.log(error);
 		} else {
+			//will ensure we don't request any tweets before the most recent tweet in the database
 			this.sinceId = success[0].most_recent_tracked_tweet;
+
 			this.getTimes();
 		}
 	});

@@ -13,7 +13,7 @@ CREATE TABLE tweets(
 CREATE TABLE users(
     user_id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
     screen_name VARCHAR(30) NOT NULL,
-    most_recent_tracked_tweet BIGINT UNSIGNED NOT NULL
+    most_recent_tracked_tweet BIGINT UNSIGNED
 );
 
-INSERT INTO users (user_id, screen_name, most_recent_tracked_tweet) VALUES(25073877, 'realDonaldTrump', 822421390125043713);
+INSERT INTO users (user_id, screen_name, most_recent_tracked_tweet) VALUES(25073877, 'realDonaldTrump', null);
