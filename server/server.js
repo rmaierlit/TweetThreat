@@ -3,7 +3,7 @@ var router = require('./routes.js');
 var app = express();
 
 app.use('/api', router);
-//app.use(express.static(__dirname + '/../client'));
+app.use(express.static(__dirname + '/../client'));
 
 app.listen(2525);
 

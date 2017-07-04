@@ -5,9 +5,16 @@
   "dependencies": {
     "express": "^4.15.3",
     "mariasql": "^0.2.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "twitter-node-client": "0.0.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.0.0"
+  },
   "scripts": {
     "start": "node ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

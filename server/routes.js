@@ -18,7 +18,7 @@ routes.get('/realDonaldTrump', function(req, res) {
 
     const nearNowQuery = 
     `SELECT count(distinct DATE(date_time)) as quantity FROM tweets 
-    where ABS(TIME_TO_SEC(TIMEDIFF(TIME(:now), TIME(date_time)))) < 30 * 60`
+    where ABS(TIME_TO_SEC(TIMEDIFF(TIME(:iso), TIME(date_time)))) < 30 * 60`
 
     m.query(daysFromFirstTweetQuery, null, (error, rows) => {
         let totalDays = parseInt(rows[0].total_days);
@@ -26,12 +26,12 @@ routes.get('/realDonaldTrump', function(req, res) {
         if (req.query.hour){
             now.setUTCHours(req.query.hour);
         }
-        now = now.toISOString();
-        m.query(nearNowQuery, {now}, (error, rows) => {  
+        let iso = now.toISOString();
+        m.query(nearNowQuery, {iso}, (error, rows) => {  
             let daysWhenTweetedNearNow = rows[0].quantity
             let risk = daysWhenTweetedNearNow / totalDays;          
             let percentRisk = Math.round(risk * 10000) /100;
-            res.send(`${percentRisk}% risk of user @realDonaldTrump tweeting in the next hour`);
+            res.send(`${percentRisk}% risk of user @realDonaldTrump tweeting in the next hour (from ${now})`);
         });
     });
 });
