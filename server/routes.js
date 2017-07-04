@@ -34,6 +34,6 @@ routes.get('/realDonaldTrump', function(req, res) {
             res.send(`${percentRisk}% risk of user @realDonaldTrump tweeting in the next hour`);
         });
     });
-})
+});
 
 module.exports = routes;
