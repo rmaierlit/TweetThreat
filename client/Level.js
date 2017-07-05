@@ -12,8 +12,12 @@ function Level(props) {
 
     return(
         <div className={levelClasses}>
-            <h1>{props.threatName}</h1>
-            <h4>{props.description}</h4>
+            <div>
+                <h1>{props.threatName}</h1>
+            </div>
+            <div>
+                <h4>{props.description}</h4>
+            </div>
         </div>
     );
 }

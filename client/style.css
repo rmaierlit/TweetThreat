@@ -1,57 +1,88 @@
+body {
+    background-color: #022577;
+}
+
+p {
+    color: #cccccc;
+}
+
+.title {
+    color: #f2f2f2;
+    border-top: solid #f2f2f2 4px;
+    border-bottom: solid #f2f2f2 4px;
+    text-align: center;
+    font-size: 7vw;
+    margin-bottom: 2vw;
+}
+
+.profile-pic {
+    float: right;
+    width: 32vw;
+    margin-right: 2vw;
+    border: outset #cccccc 10px;
+}
+
 .threat-level-list {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 75vh;
+    margin-left: 2vw;
 }
 
 .threat-level {
-    width: 300px;
-    flex: 1;
+    width: 32vw;
+    flex: 2;
     text-align: center;
     flex-direction: column;
     display: flex;
     justify-content: center;
+    border: outset #cccccc 10px;
+    font-family: Arial;
 }
 
 .big.threat-level {
-    flex: 2;
-    width: 450px;
+    flex: 5;
+    width: 48vw;
 }
 
 h1 {
+    font-size: 5vmin;
     margin: auto;
-    color: white;
-    text-shadow: 2px 2px 4px black;
+    color: #f2f2f2;
+    text-shadow: 2px 2px 0px #1a1a1a;
 }
 
 h4 {
+    font-size: 2vmin;
     margin: auto;
 }
 
 .big h1 {
-    font-size: 80px;
+    font-size: 15vmin;
+    text-shadow: 3px 3px 0px #1a1a1a;
 }
 
 .big h4 {
-    font-size: 30px;
+    font-size: 3vmin;
+    display: initial !important;
 }
 
 .red {
-    background-color: red;
+    background-color: #EC3E40;
 }
 
 .orange {
-    background-color: orange;
+    background-color: #FF9B2B;
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: #F5D800;
 }
 
 .blue {
-    background-color: lightblue;
+    background-color: #377FC7;
 }
 
 .green {
-    background-color: green;
+    background-color: #01A46D;
 }
