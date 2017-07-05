@@ -4,44 +4,49 @@ body {
 
 p {
     color: #cccccc;
+    font-size: 3vmin;
 }
 
 .title {
     color: #f2f2f2;
-    border-top: solid #f2f2f2 4px;
-    border-bottom: solid #f2f2f2 4px;
+    border-top: solid #f2f2f2 0.5vw;
+    border-bottom: solid #f2f2f2 0.5vw;
     text-align: center;
     font-size: 7vw;
     margin-bottom: 2vw;
 }
 
-.profile-pic {
+.profile {
     float: right;
-    width: 32vw;
     margin-right: 2vw;
-    border: outset #cccccc 10px;
+    width: 36vw;
+}
+
+.portrait {
+    width: 32vw;
+    border: outset #e6e6e6 2vw;
 }
 
 .threat-level-list {
     display: flex;
     flex-direction: column;
-    height: 75vh;
+    height: 80vh;
     margin-left: 2vw;
 }
 
 .threat-level {
     width: 32vw;
-    flex: 2;
+    flex: 3;
     text-align: center;
     flex-direction: column;
     display: flex;
     justify-content: center;
-    border: outset #cccccc 10px;
+    border: outset #cccccc 2vh;
     font-family: Arial;
 }
 
 .big.threat-level {
-    flex: 5;
+    flex: 7;
     width: 48vw;
 }
 
@@ -53,7 +58,7 @@ h1 {
 }
 
 h4 {
-    font-size: 2vmin;
+    font-size: 1.5vw;
     margin: auto;
 }
 
@@ -63,26 +68,31 @@ h4 {
 }
 
 .big h4 {
-    font-size: 3vmin;
+    font-size: 2vw;
     display: initial !important;
 }
 
 .red {
     background-color: #EC3E40;
+    border-color: #f27375;
 }
 
 .orange {
     background-color: #FF9B2B;
+    border-color:  #ffb866;
 }
 
 .yellow {
     background-color: #F5D800;
+    border-color: #ffea4d;
 }
 
 .blue {
     background-color: #377FC7;
+    border-color: #5f99d3;
 }
 
 .green {
     background-color: #01A46D;
+    border-color: #01cb88;
 }
