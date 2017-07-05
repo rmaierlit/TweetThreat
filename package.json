@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "evaluteds risks that specific twitter users will post new tweets in the near future",
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.3",
     "mariasql": "^0.2.6",
     "react": "^15.6.1",

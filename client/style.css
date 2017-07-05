@@ -1,0 +1,57 @@
+.threat-level-list {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+
+.threat-level {
+    width: 300px;
+    flex: 1;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+.big.threat-level {
+    flex: 2;
+    width: 450px;
+}
+
+h1 {
+    margin: auto;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+
+h4 {
+    margin: auto;
+}
+
+.big h1 {
+    font-size: 80px;
+}
+
+.big h4 {
+    font-size: 30px;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.blue {
+    background-color: lightblue;
+}
+
+.green {
+    background-color: green;
+}

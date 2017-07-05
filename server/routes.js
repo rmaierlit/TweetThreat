@@ -31,7 +31,7 @@ routes.get('/realDonaldTrump', function(req, res) {
             let daysWhenTweetedNearNow = rows[0].quantity
             let risk = daysWhenTweetedNearNow / totalDays;          
             let percentRisk = Math.round(risk * 10000) /100;
-            res.send(`${percentRisk}% risk of user @realDonaldTrump tweeting in the next hour (from ${now})`);
+            res.json({risk: percentRisk, time: now.toString()});
         });
     });
 });

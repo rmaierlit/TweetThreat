@@ -16,13 +16,13 @@ function LevelList(props) {
                color={level.color}
                threatName={level.threatName}
                description={`${level.descriptor} risk of ${props.user} tweets`}
-               min={30 - index*6}
-               max={index === 0? null: 30 - (index-1)*6} /*first threat category is uncapped for maximum hysteria*/
+               min={32 - index*8} /* categories are 0-7, 8-15, 16-23, 24-31, and 32+ */
+               max={index === 0? null: 32 - (index-1)*8} /* first threat category is uncapped for maximum hysteria */
         />
     ));
 
     return (
-        <div>{levelComponents}</div>
+        <div className='threat-level-list'>{levelComponents}</div>
     );
 };
 

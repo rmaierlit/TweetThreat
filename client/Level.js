@@ -3,7 +3,7 @@ import React from 'react';
 function Level(props) {
     var big = '';
     if (props.min === null || props.risk >= props.min){
-        if (props.max === null || props.risk < props.min){
+        if (props.max === null || props.risk < props.max){
             big = 'big';
         }
     }
