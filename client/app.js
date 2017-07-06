@@ -16,13 +16,17 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className='display'>
                 <div className='title'>Tweet Threat Advisory System</div>
-                <div className='profile'>
-                    <img className='portrait' src='https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' />
-                    <p>{`${this.state.risk}% risk of user @${this.state.user} tweeting in the next hour (as of ${this.state.time})`}</p>
+                <div className='wrapper'>
+                    <LevelList user={this.state.user} risk={this.state.risk}/>
+                    <div className='profile'>
+                        <img className='portrait' src='https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' />
+                        <div className='details'>
+                            <p>{`${this.state.risk}% risk of user @${this.state.user} tweeting in the next hour (as of ${this.state.time})`}</p>
+                        </div>
+                    </div>
                 </div>
-                <LevelList user={this.state.user} risk={this.state.risk}/>
             </div>
         );
     }

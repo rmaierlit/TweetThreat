@@ -2,9 +2,10 @@ body {
     background-color: #022577;
 }
 
-p {
-    color: #cccccc;
-    font-size: 3vmin;
+.display {
+    display: flex;
+    flex-direction: column;
+    height: 97%;
 }
 
 .title {
@@ -16,21 +17,38 @@ p {
     margin-bottom: 2vw;
 }
 
+.wrapper {
+    flex: auto;
+    display: flex;
+    align-items: stretch;
+}
+
 .profile {
-    float: right;
     margin-right: 2vw;
     width: 36vw;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
 }
 
 .portrait {
-    width: 32vw;
+    align-self: center;
+    margin-left: auto;
+    width: 25vw;
     border: outset #e6e6e6 2vw;
+}
+
+.details{
+    margin-top: auto;
+    color: #cccccc;
+    font-size: 3vmin;
+    text-align: right;
 }
 
 .threat-level-list {
     display: flex;
     flex-direction: column;
-    height: 80vh;
     margin-left: 2vw;
 }
 
@@ -51,10 +69,10 @@ p {
 }
 
 h1 {
-    font-size: 5vmin;
+    font-size: 3vw;
     margin: auto;
     color: #f2f2f2;
-    text-shadow: 2px 2px 0px #1a1a1a;
+    text-shadow: 0.3vmin 0.3vmin 0px #1a1a1a;
 }
 
 h4 {
@@ -63,8 +81,8 @@ h4 {
 }
 
 .big h1 {
-    font-size: 15vmin;
-    text-shadow: 3px 3px 0px #1a1a1a;
+    font-size: 7vw;
+    text-shadow: 0.6vmin 0.6vmin 0px #1a1a1a;
 }
 
 .big h4 {
