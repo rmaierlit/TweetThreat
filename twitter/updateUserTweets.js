@@ -1,4 +1,4 @@
 var TweetGetter = require('./twitterAPI.js');
 
-var tweetGetter = new TweetGetter();
-tweetGetter.startGettingTweets();
+var worker = new TweetGetter();
+worker.startGettingTweets();
