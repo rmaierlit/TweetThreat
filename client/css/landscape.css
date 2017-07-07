@@ -18,7 +18,7 @@
 .wrapper {
     margin-top: 30px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     height: 525px;
     align-items: stretch;
 }
@@ -27,6 +27,7 @@
     width: 430px;
     display: flex;
     flex-direction: column;
+    margin-right: 10px
 }
 
 .portrait {
@@ -56,6 +57,7 @@
 .threat-level-list {
     display: flex;
     flex-direction: column;
+    margin-left: 10px
 }
 
 .threat-level-list.hidden {
@@ -111,7 +113,7 @@ h4 {
     .portrait {
         width: 100px;
         border-width: 6px;
-        margin-left: 10px;
+        margin-left: 4px;
     }
 
     h1 {
