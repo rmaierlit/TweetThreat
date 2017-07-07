@@ -1,6 +1,7 @@
 .display {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 96%;
     width: 100%;
 }
