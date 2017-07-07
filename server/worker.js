@@ -7,12 +7,8 @@ var maria = Maria({
 
 var Twitter = require('twitter-node-client').Twitter;
 
-var config = {
-    "consumerKey": "gOpaxDx9KB7EHhucQbpICHTYK",
-	"consumerSecret": "QuDGs1ogoEAF2O4T9Wf4vtMOVQuMo4ZFvy8ub4Wh6F38qgRIAG",
-	"accessToken": "2577156107-Cis4tS6o9IyN5I9VHjzNs5PPrEtv7Fy2tyV6xPx",
-	"accessTokenSecret": "OMiOdz5Vzl0py33y9inu6cwTxVMoL1o4AagqFN4pUwJLd"
-};
+//create a file with your own twitter api key to run this project yourself
+var config = require('./twitter.secret.js');
 
 var twitter = new Twitter(config);
 
@@ -96,6 +92,10 @@ TweetGetter.prototype.getTimes = function () {
 	}
 	
 	this.twitter.getUserTimeline(options, error, this.addTimes);
+};
+
+TweetGetter.prototype.getUserInfo = function (callback) {
+	this.twitter.getUser({screen_name: 'realDonaldTrump'}, error, callback)
 };
 
 TweetGetter.prototype.start = function () {
