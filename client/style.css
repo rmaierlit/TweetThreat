@@ -50,7 +50,7 @@ body {
 }
 
 .details p {
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 .threat-level-list {
@@ -84,7 +84,7 @@ body {
 h1 {
     margin: auto;
     color: #f2f2f2;
-    text-shadow: 3px 3px 0px #1a1a1a;
+    text-shadow: 2px 2px 0px #1a1a1a;
     font-size: 130%;
 }
 
@@ -98,7 +98,7 @@ h4 {
 
 .big h1 {
     font-size: 500%;
-    text-shadow: 6px 6px 0px #1a1a1a;
+    text-shadow: 5px 5px 0px #1a1a1a;
 }
 
 .big h4 {

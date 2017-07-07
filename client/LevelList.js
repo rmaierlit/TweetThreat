@@ -16,7 +16,8 @@ function LevelList(props) {
                risk={props.risk} 
                color={level.color}
                threatName={level.threatName}
-               description={`${level.descriptor} risk of @${props.user} tweets`}
+               user={props.user}
+               descriptor={level.descriptor}
                min={32 - index*8} /* categories are 0-7, 8-15, 16-23, 24-31, and 32+ */
                max={index === 0? null: 32 - (index-1)*8} /* first threat category is uncapped for maximum hysteria */
         />
