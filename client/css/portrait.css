@@ -1,7 +1,7 @@
 .display {
     display: flex;
     flex-direction: column;
-    height: 96%;
+    height: 98%;
     width: 100%;
 }
 
@@ -105,4 +105,26 @@ h4 {
     margin: auto;
     text-transform: uppercase;
     font-size: 150%;
+}
+
+@media (min-aspect-ratio: 4/7) {
+    .portrait {
+        width: 450px;
+        margin-left: -250px;
+        border-width: 25px;
+    }
+
+    .wrapper {
+        margin-top: 550px;
+    }
+}
+
+@media (min-aspect-ratio: 400/620) {
+    .title {
+        font-size: 400%;
+    }
+
+    .portrait {
+        top: 140px;
+    }
 }
