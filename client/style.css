@@ -6,27 +6,28 @@ body {
     display: flex;
     flex-direction: column;
     height: 98%;
+    width: 100%;
 }
 
 .title {
     color: #f2f2f2;
-    border-top: solid #f2f2f2 0.5vw;
-    border-bottom: solid #f2f2f2 0.5vw;
+    border-top: solid #f2f2f2 4px;
+    border-bottom: solid #f2f2f2 4px;
     text-align: center;
-    font-size: 7vw;
-    margin-top: 2vw;
-    margin-bottom: 3vw;
+    font-size: 500%;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .wrapper {
     flex: auto;
     display: flex;
-    align-items: stretch;
+    align-items: center;
 }
 
 .profile {
-    margin-right: 2vw;
-    width: 36vw;
+    margin-right: 20px;
+    width: 340px;
     flex: auto;
     display: flex;
     flex-direction: column;
@@ -36,53 +37,60 @@ body {
 .portrait {
     align-self: center;
     margin-left: auto;
-    width: 25vw;
-    border: outset #e6e6e6 2vw;
+    width: 300px;
+    border: outset #e6e6e6 10px;
 }
 
 .details{
     margin-top: auto;
     color: #cccccc;
-    font-size: 3vmin;
+    font-size: 100%;
+    width: 100%;
     text-align: right;
 }
 
 .threat-level-list {
     display: flex;
     flex-direction: column;
-    margin-left: 2vw;
+    margin-left: 10px;
+    height: 525px;
 }
 
 .threat-level {
-    width: 32vw;
+    width: 300px;
     flex: 3;
     text-align: center;
     flex-direction: column;
     display: flex;
     justify-content: center;
-    border: outset 1.5vh;
+    border: outset 12px;
     font-family: Arial;
 }
 
 .big.threat-level {
     flex: 7;
-    width: 48vw;
-    border-width: 2.5vh;
+    width: 500px;
+    border-width: 20px;
 }
 
 h1 {
     margin: auto;
     color: #f2f2f2;
-    text-shadow: 0.3vmin 0.3vmin 0px #1a1a1a;
+    text-shadow: 3px 3px 0px #1a1a1a;
+    font-size: 130%;
 }
 
 h4 {
     margin: auto;
+    text-transform: uppercase;
+    font-size: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .big h1 {
     font-size: 500%;
-    text-shadow: 0.6vmin 0.6vmin 0px #1a1a1a;
+    text-shadow: 6px 6px 0px #1a1a1a;
 }
 
 .big h4 {
