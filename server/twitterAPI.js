@@ -12,13 +12,7 @@ var config = require('./twitter.secret.js');
 
 var twitter = new Twitter(config);
 
-var error = function (err) {
-	if (err){
-    	console.log('ERROR:', err);
-	}
-};
-
-var TweetGetter = function(twitter, maria) {
+var TweetGetter = function() {
 	this.twitter = twitter;
 	this.m = maria;
 	this.sinceId = null;
@@ -29,6 +23,13 @@ var TweetGetter = function(twitter, maria) {
 	this.addTimes = this.addTimes.bind(this); 
 	this.addSingleTime = this.addSingleTime.bind(this);
 }
+
+//generic error logging function
+var error = function (err) {
+	if (err){
+    	console.log('ERROR:', err);
+	}
+};
 
 TweetGetter.prototype.addTimes = function (data) {
 	var tweets = JSON.parse(data);
@@ -98,7 +99,7 @@ TweetGetter.prototype.getUserInfo = function (callback) {
 	this.twitter.getUser({screen_name: 'realDonaldTrump'}, error, callback)
 };
 
-TweetGetter.prototype.start = function () {
+TweetGetter.prototype.startGettingTweets = function () {
 	this.m.query('SELECT most_recent_tracked_tweet from users where screen_name = "realDonaldTrump"', null, (error, success) => {
 		if (error){
 			console.log(error);
@@ -111,5 +112,4 @@ TweetGetter.prototype.start = function () {
 	});
 }
 
-var tweetGetter = new TweetGetter(twitter, maria);
-tweetGetter.start();
+module.exports = TweetGetter;
