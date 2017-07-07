@@ -5,7 +5,7 @@ body {
 .display {
     display: flex;
     flex-direction: column;
-    height: 97%;
+    height: 98%;
 }
 
 .title {
@@ -14,7 +14,8 @@ body {
     border-bottom: solid #f2f2f2 0.5vw;
     text-align: center;
     font-size: 7vw;
-    margin-bottom: 2vw;
+    margin-top: 2vw;
+    margin-bottom: 3vw;
 }
 
 .wrapper {
@@ -59,35 +60,33 @@ body {
     flex-direction: column;
     display: flex;
     justify-content: center;
-    border: outset #cccccc 2vh;
+    border: outset 1.5vh;
     font-family: Arial;
 }
 
 .big.threat-level {
     flex: 7;
     width: 48vw;
+    border-width: 2.5vh;
 }
 
 h1 {
-    font-size: 3vw;
     margin: auto;
     color: #f2f2f2;
     text-shadow: 0.3vmin 0.3vmin 0px #1a1a1a;
 }
 
 h4 {
-    font-size: 1.5vw;
     margin: auto;
 }
 
 .big h1 {
-    font-size: 7vw;
+    font-size: 500%;
     text-shadow: 0.6vmin 0.6vmin 0px #1a1a1a;
 }
 
 .big h4 {
-    font-size: 2vw;
-    display: initial !important;
+    font-size: 120%;
 }
 
 .red {
