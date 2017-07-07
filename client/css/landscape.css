@@ -1,0 +1,103 @@
+.display {
+    display: flex;
+    flex-direction: column;
+    height: 96%;
+    width: 100%;
+}
+
+.title {
+    color: #f2f2f2;
+    border-top: solid #f2f2f2 4px;
+    border-bottom: solid #f2f2f2 4px;
+    text-align: center;
+    font-size: 400%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile {
+    width: 430px;
+    height: 525px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portrait {
+    width: 200px;
+    border: outset #e6e6e6 10px;
+    margin-right: auto;
+}
+
+.tweet {
+    flex: initial;
+    width: 400px;
+    align-self: end;
+}
+
+.details{
+    color: #cccccc;
+    font-size: 100%;
+    margin-right: auto;
+    text-align: left;
+}
+
+.details p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.threat-level-list {
+    display: flex;
+    flex-direction: column;
+    height: 525px;
+}
+
+.threat-level-list.hidden {
+    visibility: hidden;
+}
+
+.threat-level {
+    width: 300px;
+    flex: 3;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    border: outset 12px;
+    font-family: Arial;
+    margin-left: auto;
+}
+
+.big.threat-level {
+    flex: 7;
+    width: 450px;
+    border-width: 20px;
+}
+
+h1 {
+    margin: auto;
+    color: #f2f2f2;
+    text-shadow: 2px 2px 0px #1a1a1a;
+    font-size: 150%;
+}
+
+h4 {
+    margin: auto;
+    text-transform: uppercase;
+    font-size: 80%;
+}
+
+.big h1 {
+    font-size: 500%;
+    text-shadow: 5px 5px 0px #1a1a1a;
+}
+
+.big h4 {
+    font-size: 120%;
+}

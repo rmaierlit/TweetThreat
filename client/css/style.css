@@ -1,0 +1,28 @@
+body {
+    background-color: #022577;
+}
+
+.red {
+    background-color: #EC3E40;
+    border-color: #f27375 !important;
+}
+
+.orange {
+    background-color: #FF9B2B;
+    border-color:  #ffb866 !important;
+}
+
+.yellow {
+    background-color: #F5D800;
+    border-color: #ffea4d !important;
+}
+
+.blue {
+    background-color: #377FC7;
+    border-color: #5f99d3 !important;
+}
+
+.green {
+    background-color: #01A46D;
+    border-color: #01cb88 !important;
+}
