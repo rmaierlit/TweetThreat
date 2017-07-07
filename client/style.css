@@ -5,7 +5,7 @@ body {
 .display {
     display: flex;
     flex-direction: column;
-    height: 98%;
+    height: 96%;
     width: 100%;
 }
 
@@ -25,10 +25,11 @@ body {
 }
 
 .profile {
-    width: 400px;
+    width: 430px;
     height: 525px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .portrait {
@@ -38,8 +39,11 @@ body {
 }
 
 .tweet {
+    flex: initial;
+    align-content: space-around;
     width: 400px;
     margin-right: auto;
+    margin-bottom: 16px;
 }
 
 .details{
@@ -50,7 +54,8 @@ body {
 }
 
 .details p {
-    margin-top: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .threat-level-list {
