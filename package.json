@@ -8,6 +8,7 @@
     "mariasql": "^0.2.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-tweet": "^1.1.1",
     "twitter-node-client": "0.0.6"
   },
   "devDependencies": {

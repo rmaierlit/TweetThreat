@@ -1,5 +1,7 @@
 var routes = require('express').Router();
 var Maria = require('mariasql');
+var TweetGetter = require('../twitter/twitterApi.js');
+var worker = new TweetGetter();
 
 var m = Maria({
         host: 'localHost',
@@ -7,7 +9,7 @@ var m = Maria({
         db: 'tweetThreat'
 });
 
-routes.get('/realDonaldTrump', function(req, res) {
+routes.get('/realDonaldTrump/risk', function(req, res) {
     const daysFromFirstTweetQuery = 
     `SELECT DATEDIFF(UTC_DATE, date(date_time)) as total_days FROM tweets ORDER BY tweet_id LIMIT 1`;
 
@@ -34,6 +36,10 @@ routes.get('/realDonaldTrump', function(req, res) {
             res.json({risk: percentRisk, time: now.toLocaleTimeString()});
         });
     });
+});
+
+routes.get('/realDonaldTrump/latestTweet', function (req, res) {
+    worker.getLatestTweet(info => res.json(JSON.parse(info)[0]) );
 });
 
 module.exports = routes;

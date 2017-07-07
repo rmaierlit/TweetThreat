@@ -95,8 +95,13 @@ TweetGetter.prototype.getTimes = function () {
 	this.twitter.getUserTimeline(options, error, this.addTimes);
 };
 
-TweetGetter.prototype.getUserInfo = function (callback) {
-	this.twitter.getUser({screen_name: 'realDonaldTrump'}, error, callback)
+TweetGetter.prototype.getLatestTweet = function (callback) {
+	let options = { 
+		screen_name: 'realDonaldTrump',
+		count: '1',
+		trim_user: true
+	};
+	this.twitter.getUserTimeline({screen_name: 'realDonaldTrump'}, error, callback)
 };
 
 TweetGetter.prototype.startGettingTweets = function () {
