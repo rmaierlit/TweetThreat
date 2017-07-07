@@ -20,43 +20,47 @@ body {
 }
 
 .wrapper {
-    flex: auto;
     display: flex;
-    align-items: center;
     justify-content: space-around;
 }
 
 .profile {
-    margin-right: 20px;
     width: 400px;
+    height: 525px;
     display: flex;
     flex-direction: column;
-    align-items: right;
 }
 
 .portrait {
     width: 200px;
     border: outset #e6e6e6 10px;
+    margin-right: auto;
 }
 
 .tweet {
     width: 400px;
-    margin-left: auto;
+    margin-right: auto;
 }
 
 .details{
-    margin-top: auto;
     color: #cccccc;
     font-size: 100%;
-    margin-left: auto;
-    text-align: right;
+    margin-right: auto;
+    text-align: left;
+}
+
+.details p {
+    margin-top: 5px;
 }
 
 .threat-level-list {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
     height: 525px;
+}
+
+.threat-level-list.hidden {
+    visibility: hidden;
 }
 
 .threat-level {
@@ -68,6 +72,7 @@ body {
     justify-content: center;
     border: outset 12px;
     font-family: Arial;
+    margin-left: auto;
 }
 
 .big.threat-level {

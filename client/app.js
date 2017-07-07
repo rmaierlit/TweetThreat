@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import LevelList from './LevelList.js';
 import axios from 'axios';
+import Details from './Details.js';
 import LatestTweet from './LatestTweet.js';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {user: 'realDonaldTrump', risk: 25, time: '4:20am', latest: null};
+        this.state = {user: 'realDonaldTrump', risk: null, time: null, latest: null};
     }
 
     getRisk() {
@@ -30,14 +31,14 @@ class App extends Component {
             <div className='display'>
                 <div className='title'>Tweet Threat Advisory System</div>
                 <div className='wrapper'>
-                    <LevelList user={this.state.user} risk={this.state.risk}/>
                     <div className='profile'>
                         <img className='portrait' src='https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' />
-                        <div className='details'>
-                            <LatestTweet data={this.state.latest} />
-                            <p>{`${this.state.risk}% risk of user @${this.state.user} tweeting in the next hour (as of ${this.state.time})`}</p>
-                        </div>
+                        <Details risk={this.state.risk} 
+                                 time={this.state.time}
+                                 latest={this.state.latest} />
+                        <LatestTweet data={this.state.latest} />
                     </div>
+                    <LevelList user={this.state.user} risk={this.state.risk}/>
                 </div>
             </div>
         );

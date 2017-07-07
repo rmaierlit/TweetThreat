@@ -9,6 +9,7 @@ function LevelList(props) {
         {color: 'blue', threatName: 'GUARDED', descriptor: 'General'},
         {color: 'green', threatName: 'LOW', descriptor: 'Low'}
     ]
+    const classes = props.risk === null? 'threat-level-list hidden': 'threat-level-list';
 
     const levelComponents = threatLevels.map((level, index, array) => (
         <Level key={index}
@@ -22,7 +23,7 @@ function LevelList(props) {
     ));
 
     return (
-        <div className='threat-level-list'>{levelComponents}</div>
+        <div className={classes}>{levelComponents}</div>
     );
 };
 
