@@ -26,31 +26,33 @@
     width: 430px;
     display: flex;
     flex-direction: column;
-    margin-right: 10px
+    margin-right: 10px;
+    justify-content: space-between;
 }
 
 .portrait {
     width: 200px;
     border: outset #e6e6e6 10px;
-    margin-right: auto;
+    float: left;
+}
+
+.details{
+    width: 200px;
+    float: right;
+    color: #cccccc;
+    font-size: 100%;
+    text-align: left;
+}
+
+.details p {
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .tweet {
     flex: initial;
     width: 400px;
     align-self: end;
-}
-
-.details{
-    color: #cccccc;
-    font-size: 100%;
-    margin-right: auto;
-    text-align: left;
-}
-
-.details p {
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 .threat-level-list {
@@ -70,7 +72,6 @@
     text-align: center;
     flex-direction: column;
     display: flex;
-    justify-content: center;
     border: outset 12px;
     font-family: Arial;
     margin-left: auto;
@@ -109,14 +110,22 @@ h4 {
         margin-top: 20px;
     }
 
+    .details {
+        width: 240px
+    }
+
+    .details p {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+
     .threat-level-list {
         height: 400px;
     }
 
     .portrait {
-        width: 100px;
+        width: 160px;
         border-width: 6px;
-        margin-left: 4px;
     }
 
     h1 {

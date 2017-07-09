@@ -32,10 +32,12 @@ class App extends Component {
                 <div className='title'>Tweet Threat Advisory System</div>
                 <div className='wrapper'>
                     <div className='profile'>
-                        <img className='portrait' src='https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' />
-                        <Details risk={this.state.risk} 
+                        <div className='overview'>
+                            <img className='portrait' src='https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' />
+                            <Details risk={this.state.risk} 
                                  time={this.state.time}
                                  latest={this.state.latest} />
+                        </div>
                         <LatestTweet data={this.state.latest} />
                     </div>
                     <LevelList user={this.state.user} risk={this.state.risk}/>
