@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import LevelList from './LevelList.js';
-import axios from 'axios';
 import Details from './Details.js';
-import LatestTweet from './LatestTweet.js';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {user: 'realDonaldTrump', risk: null, time: null, latest: null};
+        this.state = {user: 'realDonaldTrump', risk: 30, time: 'lol', latest: 'wut'};
     }
 
-    getRisk() {
+    /*getRisk() {
         axios.get(`http://localhost:2525/api/${this.state.user}/risk`)
             .then( res => this.setState(res.data));
     }
@@ -24,7 +22,7 @@ class App extends Component {
     componentWillMount() {
         this.getRisk();
         this.getLatestTweet();
-    }
+    }*/
 
     render() {
         return (
@@ -38,7 +36,6 @@ class App extends Component {
                                  time={this.state.time}
                                  latest={this.state.latest} />
                         </div>
-                        <LatestTweet data={this.state.latest} />
                     </div>
                     <LevelList user={this.state.user} risk={this.state.risk}/>
                 </div>
