@@ -1,9 +1,9 @@
-var Maria = require ('mariasql');
+/*var Maria = require ('mariasql');
 var maria = Maria({
         host: '127.0.0.1',
         user: 'root',
         db: 'tweetThreat'
-});
+});*/
 
 var Twitter = require('twitter-node-client').Twitter;
 
@@ -14,7 +14,7 @@ var twitter = new Twitter(config);
 
 var TweetGetter = function() {
 	this.twitter = twitter;
-	this.m = maria;
+	//this.m = maria;
 	this.sinceId = null;
 	this.maxId = null;
 	this.latest = null;
@@ -31,7 +31,7 @@ var error = function (err) {
 	}
 };
 
-TweetGetter.prototype.addTimes = function (data) {
+/*TweetGetter.prototype.addTimes = function (data) {
 	var tweets = JSON.parse(data);
 
 	//abort if api call repsonds with no tweets
@@ -95,14 +95,6 @@ TweetGetter.prototype.getTimes = function () {
 	this.twitter.getUserTimeline(options, error, this.addTimes);
 };
 
-TweetGetter.prototype.getLatestTweet = function (callback) {
-	let options = { 
-		screen_name: 'realDonaldTrump',
-		count: '1',
-	};
-	this.twitter.getUserTimeline(options, error, callback)
-};
-
 TweetGetter.prototype.startGettingTweets = function () {
 	this.m.query('SELECT most_recent_tracked_tweet from users where screen_name = "realDonaldTrump"', null, (error, success) => {
 		if (error){
@@ -114,6 +106,14 @@ TweetGetter.prototype.startGettingTweets = function () {
 			this.getTimes();
 		}
 	});
-}
+}*/
+
+TweetGetter.prototype.getLatestTweet = function (callback) {
+	let options = { 
+		screen_name: 'realDonaldTrump',
+		count: '1',
+	};
+	this.twitter.getUserTimeline(options, error, callback)
+};
 
 module.exports = TweetGetter;

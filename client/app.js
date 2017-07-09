@@ -6,7 +6,7 @@ import Details from './Details.js';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {user: 'realDonaldTrump', risk: 30, time: 'lol', latest: 'wut'};
+        this.state = {user: 'realDonaldTrump', risk: 30, time: 'lol', latest: null};
     }
 
     /*getRisk() {
@@ -21,8 +21,7 @@ class App extends Component {
 
     componentWillMount() {
         //this.getRisk();
-        //this.getLatestTweet();
-        window.scrollTo(0,1);
+        this.getLatestTweet();
     }
 
     render() {
