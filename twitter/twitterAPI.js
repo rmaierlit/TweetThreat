@@ -15,13 +15,13 @@ var twitter = new Twitter(config);
 var TweetGetter = function() {
 	this.twitter = twitter;
 	//this.m = maria;
-	this.sinceId = null;
-	this.maxId = null;
-	this.latest = null;
+	// this.sinceId = null;
+	// this.maxId = null;
+	// this.latest = null;
 
 	//bind any functions that will be passed as callbacks so that reference to the value 'this' is not lost
-	this.addTimes = this.addTimes.bind(this); 
-	this.addSingleTime = this.addSingleTime.bind(this);
+	// this.addTimes = this.addTimes.bind(this); 
+	// this.addSingleTime = this.addSingleTime.bind(this);
 }
 
 //generic error logging function
