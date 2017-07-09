@@ -17,12 +17,13 @@ class App extends Component {
     getLatestTweet() {
         axios.get(`http://localhost:2525/api/${this.state.user}/latestTweet`)
             .then( res => this.setState({latest: res.data}) );
-    }
+    }*/
 
     componentWillMount() {
-        this.getRisk();
-        this.getLatestTweet();
-    }*/
+        //this.getRisk();
+        //this.getLatestTweet();
+        window.scrollTo(0,1);
+    }
 
     render() {
         return (
