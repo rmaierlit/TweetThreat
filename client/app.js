@@ -12,12 +12,12 @@ class App extends Component {
     /*getRisk() {
         axios.get(`http://localhost:2525/api/${this.state.user}/risk`)
             .then( res => this.setState(res.data));
-    }
+    }*/
 
     getLatestTweet() {
         axios.get(`http://localhost:2525/api/${this.state.user}/latestTweet`)
             .then( res => this.setState({latest: res.data}) );
-    }*/
+    }
 
     componentWillMount() {
         //this.getRisk();
