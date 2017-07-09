@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
+import axios from 'axios';
 import LevelList from './LevelList.js';
 import Details from './Details.js';
 
@@ -15,7 +16,7 @@ class App extends Component {
     }*/
 
     getLatestTweet() {
-        axios.get(`http://localhost:2525/api/${this.state.user}/latestTweet`)
+        axios.get(`http://localhost:80/api/${this.state.user}/latestTweet`)
             .then( res => this.setState({latest: res.data}) );
     }
 
