@@ -1,6 +1,6 @@
 var routes = require('express').Router();
 //var Maria = require('mariasql');
-var TweetGetter = require('~/TweetThreat/twitter/twitterApi.js');
+var TweetGetter = require('./twitter/twitterAPI.js');
 var worker = new TweetGetter();
 
 // var m = Maria({
