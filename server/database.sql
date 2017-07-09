@@ -1,6 +1,7 @@
 /*schema for TweetThreat database*/
 
-CREATE OR REPLACE DATABASE tweetThreat;
+DROP DATABASE IF EXISTS tweetThreat
+CREATE DATABASE tweetThreat;
 
 USE tweetThreat;
 
