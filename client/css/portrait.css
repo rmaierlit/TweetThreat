@@ -54,6 +54,7 @@
 .details p{
     margin-top: 16px;
     margin-bottom: 20px;
+    font-size: 90%;
 }
 
 .threat-level-list {
